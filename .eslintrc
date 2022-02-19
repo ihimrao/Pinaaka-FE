@@ -1,0 +1,144 @@
+{
+    "parser": "babel-eslint",
+    "plugins": [
+        "react"
+    ],
+    "extends": "airbnb",
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest": true
+    },
+    "globals": {
+        "setupWrapper": true,
+        "setupWrapperStore": true,
+        "shallowWrapper": true,
+        "mountWrapper": true,
+        "wrapperStore": true
+    },
+    "rules": {
+        "no-debugger":"off",
+        "react/jsx-props-no-spreading": "off",
+        "react/destructuring-assignment": [0, "always"],
+  		"react/prop-types": "off",
+        "camelcase": [
+            1
+        ],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "json": "always"
+            }
+        ],
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "jsx-a11y/anchor-is-valid": [
+            "error",
+            {
+                "components": [
+                    "Link"
+                ],
+                "specialLink": [
+                    "to"
+                ]
+            }
+        ],
+        "linebreak-style": "off",
+        "max-len": "off",
+        "eqeqeq": [
+            "error",
+            "always"
+        ],
+        "no-console": 0,
+        "no-multi-spaces": "off",
+        "prefer-arrow-callback": "error",
+        "react/forbid-prop-types": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "react/jsx-indent-props": [
+            "error",
+            4
+        ],
+        "react/jsx-indent": [
+            "error",
+            4
+        ],
+        "react/jsx-one-expression-per-line": [
+            "off"
+        ],
+        "react/no-did-update-set-state": [
+            "off"
+        ],
+        "react/prefer-es6-class": 1,
+        "no-undef": [
+            1
+        ],
+        "no-underscore-dangle": [
+            0,
+            "always"
+        ],
+        "template-curly-spacing": [
+            2,
+            "always"
+        ],
+        "array-bracket-spacing": [
+            2,
+            "always"
+        ],
+        "object-curly-spacing": [
+            2,
+            "always"
+        ],
+        "computed-property-spacing": [
+            2,
+            "always"
+        ],
+        "no-multiple-empty-lines": [
+            2,
+            {
+                "max": 1,
+                "maxEOF": 0,
+                "maxBOF": 0
+            }
+        ],
+        "quotes": [
+            1,
+            "single",
+            "avoid-escape"
+        ],
+        "react/react-in-jsx-scope": "off",
+        "prefer-destructuring": [
+            "error",
+            {
+                "VariableDeclarator": {
+                    "array": false,
+                    "object": false
+                },
+                "AssignmentExpression": {
+                    "array": false,
+                    "object": false
+                }
+            }
+        ]
+    }
+}

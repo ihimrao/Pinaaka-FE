@@ -1,0 +1,30 @@
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: "Roboto";
+
+}
+::-webkit-scrollbar {
+	width: 5px;
+	height: 10px;
+	border-radius: 10px;
+}
+  
+::-webkit-scrollbar-thumb {
+	background: #D8D8D8;
+}
+  
+::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.0);
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.theme-dark .react-loading-skeleton {
+	--base-color: #ebebeb20;
+	--highlight-color: #f5f5f510;
+}
