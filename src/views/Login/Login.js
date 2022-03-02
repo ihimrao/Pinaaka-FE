@@ -159,14 +159,14 @@ const Login = () => {
 
                 </div> */}
                 <div className={classes.rightViewWrapper}>
-                    <Box display="flex" justifyContent="center" alignItems="center" margin="5px 0px">
-                        <MaterialButton>
-                            <img src={images.adminLogo} className="belowDiv" alt="" height="80px" width="80px" />
-
-                        </MaterialButton>
-                    </Box>
                     <div className={classes.loginHeader}>
                         <Typography className={classes.loginHeaderText} variant="h5" display="block">
+                            <Box display="flex" justifyContent="center" alignItems="center" margin="5px 0px">
+                                <MaterialButton>
+                                    <img src={images.adminLogo} className="belowDiv" alt="" height="80px" width="80px" />
+
+                                </MaterialButton>
+                            </Box>
                             SIGN IN TO TRIDO-ADMIN
                         </Typography>
                     </div>
