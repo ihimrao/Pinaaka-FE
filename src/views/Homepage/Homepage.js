@@ -66,7 +66,6 @@ const Homepage = () => {
     const projectLoading = useSelector(projectSelector.getProjectLoading);
 
     const  data  = useSelector(projectSelector.getProjectsData);
-    console.log('data => ', data);
     const userToken = useSelector(userSelectors.getUserToken);
     const [ nameSearch, setSearchName ] = useState('');
     const [ filterData, setFilterData ] = useState(data);
@@ -131,7 +130,7 @@ const Homepage = () => {
                         <SearchInput name="Search for Key" value={nameSearch} onChange={handleSearchFilter} />
                         <div className={classes.flexRightWrapper}>
                             <HeaderButton onClick={() => handleToggleCreateProjectModal(true)} variant="outlined">
-                                Create New User
+                                Create New Key
                                 <Icon>
                                     <i className="bx bxs-plus-circle" />
                                 </Icon>

@@ -5,13 +5,17 @@ import Button from '../../components/Button/Button';
 import TextField from '../../components/FormFields/TextField';
 
 const LoginButton = withStyles(() => ({
-    root: {},
+    root: {
+        background: '#09112c',
+        color: '#FFFFFF',
+    },
 }))(Button);
 const useStyles = makeStyles((theme) => ({
     textField: {
         '& input:-webkit-autofill, & input:-webkit-autofill:hover, & input:-webkit-autofill:focus': {
             '-webkit-box-shadow': `0 0 0 30px ${ theme.palette.loginInputBg } inset !important`,
         },
+        borderRadius: '0px',
     },
 }));
 const LoginForm = (props) => {
@@ -86,7 +90,7 @@ const LoginForm = (props) => {
                     autoComplete="off"
                     value={formObj?.username}
                     onChange={handleChange}
-                    label="Username"
+                    label="Email"
                     name="username"
                     type="text"
                     error={!!errors?.username}
@@ -106,10 +110,13 @@ const LoginForm = (props) => {
                     helperText={errors?.password}
                     className={classes.textField}
                 />
-                <div style={{ paddingBottom: '10px' }} />
+                <div style={{
+                    display: 'flex', flexDirection: 'row', paddingBottom: '10px', justifyContent: 'flex-end', alignItems: 'center',
+                }}
+                />
 
-                <LoginButton type="submit" color="primary" fullWidth variant="contained">
-                    SIGN IN
+                <LoginButton style={{ width: '50%', justifyContent: 'center', alignItems: 'center'  }} type="submit" variant="contained">
+                    Login
                 </LoginButton>
             </form>
         </Box>

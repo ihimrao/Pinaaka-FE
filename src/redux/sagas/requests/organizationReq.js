@@ -26,12 +26,13 @@ export const createOrganization = (values, auth) => axios.request({
     },
 });
 
-export const deleteOrganization = ({ orgId, token }) => axios.request({
-    method: 'DELETE',
-    url: apiUrls.organization.deleteOrganization(orgId),
+export const deleteOrganization = ({ email, token }) => axios.request({
+    method: 'POST',
+    url: apiUrls.organization.deleteAdmin,
     headers: {
         Authorization: `${ token }`,
     },
+    data: { email },
 });
 
 export const uploadImage = (values) => axios.request({

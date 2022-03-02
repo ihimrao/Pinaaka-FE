@@ -3,7 +3,7 @@ import types from '../../types';
 import {
     configUpdate, configFetch, createBricks, insertEnv,
 } from '../../sagas/requests/userReq';
-import { createProject, deleteProject } from '../../sagas/requests/projectReq';
+import { createProject, deleteProject, resetKey } from '../../sagas/requests/projectReq';
 import { signoutUser } from '../user/userActions';
 import {
     createOrganization,
@@ -34,12 +34,10 @@ export const createOrganizationData = (values, auth) => createOrganization(value
 export const deleteOrganizationById = (obj) => deleteOrganization(obj)
     .then((response) => response.status)
     .catch((error) => {
-        const history = useHistory();
         const resp = JSON.stringify(error.response.data);
         const parseResp = JSON.parse(resp);
         if (parseResp.status === 401) {
             signoutUser();
-            history.push('/');
         }
     });
 
@@ -137,12 +135,20 @@ export const createProjectData = (auth, values, orgId) => createProject(auth, va
 export const deleteProjectById = (obj) => deleteProject(obj)
     .then((response) => response)
     .catch((error) => {
-        const history = useHistory();
         const resp = JSON.stringify(error.response.data);
         const parseResp = JSON.parse(resp);
         if (parseResp.status === 401) {
             signoutUser();
-            history.push('/');
+        }
+    });
+
+export const resetKeyById = (obj) => resetKey(obj)
+    .then((response) => response)
+    .catch((error) => {
+        const resp = JSON.stringify(error.response.data);
+        const parseResp = JSON.parse(resp);
+        if (parseResp.status === 401) {
+            signoutUser();
         }
     });
 

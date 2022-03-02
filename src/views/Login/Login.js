@@ -5,14 +5,13 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from 'react-redux';
-import { withStyles, makeStyles, alpha } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import images from '../../assets/images/images';
 import LoginForm from './LoginForm';
 import { getUserData } from '../../redux/states/user/userActions';
 import userState from '../../redux/states/user/userSelector';
 import Loading from '../Loading/Loading';
-import ForgotPassword from './ForgotPassword';
 
 /*= ================ Styling Start ========================== */
 const useStyles = makeStyles((theme) => ({
@@ -88,6 +87,18 @@ const useStyles = makeStyles((theme) => ({
     },
     loginHeaderText: {
         color: 'white',
+        borderRadius: '10px',
+        border: '1px solid',
+        alignItems: 'center',
+        textAlign: 'center',
+        padding: '10px',
+    },
+    belowDiv: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100px',
     },
 }));
 
@@ -96,13 +107,6 @@ const ViewWrapper = withStyles(() => ({
         height: 'inherit',
     },
 }))(Box);
-
-const ForgetPasswordButton = withStyles(() => ({
-    root: {
-        color: alpha('#ffffff', 0.7),
-        textTransform: 'capitalize',
-    },
-}))(Typography);
 
 /*= ================ Styling End ========================== */
 /*= ================ component ========================== */
@@ -117,14 +121,7 @@ const Login = () => {
     const token = useSelector(userState.getUserToken);
     const role = useSelector(userState.getUserRole);
     const loginError = useSelector(userState.getLoginError);
-    const [ forgot, setForgot ] = useState(false);
 
-    const handleForgotPassword = () => {
-        setForgot(true);
-    };
-    const handleSignIn = () => {
-        setForgot(false);
-    };
     useEffect(() => {
         if (token) {
             if (role) { history.push('/admins'); } else {
@@ -157,26 +154,23 @@ const Login = () => {
         <div className={classes.loginWrapper}>
             <ViewWrapper className="view-wrapper" display="flex" alignItems="center" justifyContent="space-around">
                 <img src={images.loginBg} className={`left-img ${ classes.bgWrapperImg }`} alt="" />
-                <div className={classes.leftViewWrapper}>
+                {/* <div className={classes.leftViewWrapper}>
                     <img src={images.logo_light} className={`left-img ${ classes.leftLogoWrapper }`} alt="" />
 
-                </div>
+                </div> */}
                 <div className={classes.rightViewWrapper}>
-                    <div className={classes.loginHeader}>
-                        <Typography className={classes.loginHeaderText} variant="h5" display="block">
-                            {forgot ? 'FORGOT PASSWORD' : 'SIGN IN TO TRIDO-ADMIN'}
-                        </Typography>
-                    </div>
-                    {forgot ? <ForgotPassword />
-                        : <LoginForm loginError={loginError} handleSubmit={handleLogin} />}
+                    <Box display="flex" justifyContent="center" alignItems="center" margin="5px 0px">
+                        <MaterialButton>
+                            <img src={images.adminLogo} className="belowDiv" alt="" height="80px" width="80px" />
 
-                    <Box display="flex" justifyContent="flex-end" alignItems="center" margin="5px 0px">
-                        <MaterialButton variant="text">
-                            <ForgetPasswordButton onClick={forgot ? handleSignIn : handleForgotPassword} variant="caption" className="" display="block">
-                                {forgot ? 'Sign In ?' : 'Forgot Password ?'}
-                            </ForgetPasswordButton>
                         </MaterialButton>
                     </Box>
+                    <div className={classes.loginHeader}>
+                        <Typography className={classes.loginHeaderText} variant="h5" display="block">
+                            SIGN IN TO TRIDO-ADMIN
+                        </Typography>
+                    </div>
+                    <LoginForm loginError={loginError} handleSubmit={handleLogin} />
 
                 </div>
                 <Snackbar

@@ -50,7 +50,6 @@ export const getAllProjectToken = async (projectId, accessToken, history) => {
             signoutUser();
             history.push('/');
         } else {
-            console.log(error.response.text);
             return { errorMessage: error?.response?.statusText || 'please try again', error: 1 };
         }
     }

@@ -5,10 +5,8 @@ import { setUserData } from '../../states/user/userActions';
 
 export function* handleFetchProjects(action) {
     try {
-        console.log('=> ', action);
         yield put(setProjectLoading(true));
         const response = yield call(() => fetchProjectsFromServer(action?.payload?.auth || {}, action?.payload?.orgId));
-        console.log(response);
         const { data } = response;
         yield put(setProjectData(data.list));
         yield put(setProjectLoading(false));

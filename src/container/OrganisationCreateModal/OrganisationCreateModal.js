@@ -64,7 +64,6 @@ const OrganisationCreateModal = (props) => {
                     admin: 'subadmin',
                 }}
                 validate={(values) => {
-                    console.log('values => ', values);
                     const errors = {};
                     if (!values.username) {
                         errors.username = 'required';

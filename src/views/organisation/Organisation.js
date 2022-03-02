@@ -9,6 +9,7 @@ import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/styles';
 import { getOrganizationData, clearProjects } from '../../redux/states/project/projectActions';
+import { getUserinfo } from '../../redux/states/user/userInfoAction';
 import StackCardOrganization from '../../container/StackCard/StackCardOrganization';
 import userSelectors from '../../redux/states/user/userSelector';
 import projectSelectors from '../../redux/states/project/projectSelector';
@@ -76,7 +77,6 @@ const Organization = () => {
     const reduxDispatch = useDispatch();
 
     const  data  = useSelector(projectSelectors.getOrganizationData);
-    console.log(useSelector(projectSelectors.getOrganizationData));
     const userToken = useSelector(userSelectors.getUserToken);
 
     const [ isOrganizationCreateModalOpen, setIsOrganizationCreateModalOpen ] = React.useState(false);
@@ -108,8 +108,8 @@ const Organization = () => {
 
     const getOrganizationList = () => {
         setIsOrganizationLoading(true);
-        console.log(userToken);
         reduxDispatch(getOrganizationData(userToken));
+        reduxDispatch(getUserinfo(userToken));
     };
 
     useEffect(() => {
@@ -200,8 +200,8 @@ const Organization = () => {
                     autoHideDuration={3000}
                     onClose={handleCloseSuccessToast}
                 >
-                    <Alert onClose={handleCloseSuccessToast} elevation={6} variant="filled" severity={showSuccessToast ? 'success' : 'error'}>
-                        ({ showSuccessToast ? 'New Admin created' : data.error})
+                    <Alert onClose={handleCloseSuccessToast} elevation={6} variant="filled" severity="success">
+                        ({ showSuccessToast && 'New Admin created' })
                     </Alert>
                 </Snackbar>
             </div>

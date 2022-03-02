@@ -12,6 +12,22 @@ export const fetchUserDataFromServer = ({ username, password }) => axios.request
     },
 });
 
+// fetch user data
+export const fetchUserInfoFromServer = (auth) => axios.request({
+    method: 'GET',
+    url: apiUrls.users.fetchUserInfo,
+    headers: {
+        Authorization: `${ auth }`,
+    },
+});
+export const fetchGlobalInfoFromServer = (auth) => axios.request({
+    method: 'GET',
+    url: apiUrls.users.fetchGlobalInfo,
+    headers: {
+        Authorization: `${ auth }`,
+    },
+});
+
 const fetchContentData = (userToken, projectId) => axios.request({
     method: 'GET',
     url: `${ apiUrls.users.fetchContentData }/${ projectId }`,

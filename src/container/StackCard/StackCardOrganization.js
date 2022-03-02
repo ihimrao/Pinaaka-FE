@@ -126,9 +126,8 @@ const OpenStackButton = withStyles(() => ({
 const StackCardOrganization = ({ dataOrganization, getOrganizationList = () => { } }) => {
     const [ currentTheme, setCurrentTheme ] = React.useState(colors.blue);
     const classes = useStyle({ themeColor: currentTheme });
-    console.log('new', dataOrganization);
     const [ isDltWarningModal, setIsDltWarningModal ] = React.useState(false);
-    const [ isDeleteSuccess, setIsDeleteSuccess ] = React.useState(false);
+    const [ isDeleteSuccess, setIsDeleteSuccess ] = React.useState({ show: false, msg: 'Deleted Successfully' });
     const [ isDeleteInProgress, setIsDeleteInProgress ] = React.useState(false);
 
     const userToken = useSelector(userSelectors.getUserToken);
@@ -158,9 +157,10 @@ const StackCardOrganization = ({ dataOrganization, getOrganizationList = () => {
     const handleDeleteOrganization = async () => {
         setIsDeleteInProgress(true);
         const response = await deleteOrganizationById({
-            orgId: dataOrganization._id, token: userToken,
+            email: dataOrganization.email, token: userToken,
         });
         if (response === 200) {
+            setIsDeleteSuccess({ show: true, msg: response?.msg });
             toggleDltSuccessToast(true);
             toggleDltWarningModal(false);
             getOrganizationList();
@@ -236,19 +236,19 @@ const StackCardOrganization = ({ dataOrganization, getOrganizationList = () => {
                     {dataOrganization.username.length < 21
                         ? `${ dataOrganization.username }`
                         : `${ dataOrganization.username.substring(0, 21) }...`}
-                </span> organization?
+                </span> Admin?
             </WarningModal>
             <Snackbar
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'left',
                 }}
-                open={isDeleteSuccess}
+                open={isDeleteSuccess.show}
                 autoHideDuration={3000}
                 onClose={handleCloseDltSuccessToast}
             >
                 <Alert onClose={handleCloseDltSuccessToast} elevation={6} variant="filled" severity="success">
-                    Organization deleted successfully!
+                    {isDeleteSuccess.msg}
                 </Alert>
             </Snackbar>
         </Grid>

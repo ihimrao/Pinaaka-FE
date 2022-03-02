@@ -52,7 +52,6 @@ const TokenViewContent = ({ tokenCreated }) => {
         }
 
         if (data.error === 1) {
-            console.log('data =>', data.errorMessage, data.error);
             setApierrorMessage(data.errorMessage);
             setShowSuccessToast(true);
             setisLoading(false);

@@ -5,17 +5,20 @@ const apiUrls = {
     fetchFlags: window.bricksConfig ? window.bricksConfig.REACT_APP_LAG_URL : process.env.REACT_APP_FLAG_URL,
     users: {
         fetchUserData: `${ serverUrl }admin/login`,
+        fetchUserInfo: `${ serverUrl }admin/getAdminDetails`,
+        fetchGlobalInfo: `${ serverUrl }admin/getGlobalInfo`,
         fetchOrganizationData: `${ serverUrl }admin/getAllAdmin`,
         addamin: `${ serverUrl }admin/addAdmin`,
         fetchUsers: `${ serverUrl }admin/getAllUser`,
-
-        deleteProject: (orgId, projectId) => `${ serverUrl }/${ orgId }/project/${ projectId }`,
+        createKey: `${ serverUrl }admin/addUser`,
+        deleteProject: `${ serverUrl }admin/deleteUser`,
+        resetKey: `${ serverUrl }admin/resetKey`,
         fetchEnvData: `${ serverUrl }/environment`,
         fetchContentData: `${ serverUrl }/brick`,
         fetchContentType: `${ serverUrl }/brickvalue`,
     },
     organization: {
-        deleteOrganization: (orgId) => `${ serverUrl }/organization/${ orgId }`,
+        deleteAdmin: `${ serverUrl }admin/deleteAdmin`,
     },
     createContent: {
         fetchNativeFields: `${ serverUrl }/native-fields`,

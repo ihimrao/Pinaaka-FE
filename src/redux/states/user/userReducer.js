@@ -2,7 +2,9 @@ import types from '../../types';
 
 const INIT_STATE = {
     userState: {},
+    userInfoState: {},
     organizationState: {},
+    globalInfoState: {},
     projectState: {},
     error: '',
 };
@@ -15,6 +17,18 @@ const userReducer = (state = INIT_STATE, action) => {
                 userState: action.payload.user,
                 error: '',
             };
+        case types.user.SET_USER_INFO:
+            return {
+                ...state,
+                userInfoState: action.payload.user,
+            };
+        case types.user.SET_GLOBAL_INFO:
+            console.log('=>', action.payload.user);
+            return {
+                ...state,
+                globalInfoState: action.payload.user,
+            };
+
         case types.user.SET_USER_SIGNOUT:
             return {
                 ...state,

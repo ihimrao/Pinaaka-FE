@@ -3,6 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
@@ -37,20 +38,24 @@ export const WarningModal = (props) => {
         <Dialog
             fullWidth
             maxWidth="sm"
+            style={{ border: '1px solid gray' }}
             open={isOpen}
             onClose={handleClose}
             className={classes.modalHeaderWrapper}
         >
+            <DialogTitle>
+                {props?.title || 'Title'}
+            </DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     {props.children}
                 </DialogContentText>
             </DialogContent>
             <DialogActions style={{ marginTop: '0px' }}>
-                <Button disabled={isLoading} onClick={(e) => { e.stopPropagation(); handleClose(); }} color="primary">
+                <Button disabled={isLoading} style={{ background: '#09112c', color: 'white' }} onClick={(e) => { e.stopPropagation(); handleClose(); }} color="primary">
                     Disagree
                 </Button>
-                <Button disabled={isLoading} onClick={(e) => { e.stopPropagation(); handleAgree(); }} color="primary" autoFocus>
+                <Button disabled={isLoading} style={{ background: 'red', color: 'black' }} onClick={(e) => { e.stopPropagation(); handleAgree(); }} color="primary" autoFocus>
                     Agree
                 </Button>
             </DialogActions>

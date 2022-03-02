@@ -8,7 +8,6 @@ export function* handleFetchOrganization(action) {
     try {
         const response = yield call(() => fetchOrganizationFromServer(action?.auth || {}));
         const { data: { list } } = response;
-        console.log(list);
         yield put(setOrganizationData(list));
     } catch (err) {
         const resp = JSON.stringify(err.response.data);

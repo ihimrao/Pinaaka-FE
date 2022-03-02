@@ -11,7 +11,6 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Divider from '@material-ui/core/Divider';
 import { useHistory } from 'react-router-dom';
-
 import Tooltip  from '@material-ui/core/Tooltip';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
@@ -90,9 +89,8 @@ const TopNav = () => {
     // const [ searchText, setSearchText ] = React.useState('');
 
     const currentTheme = useSelector((state) => state.appState?.theme);
-    const userObj = useSelector((state) => state.user.userState.person);
+    const { adminInfo } = useSelector((state) => state.user.userInfoState);
     const reduxDispatch = useDispatch();
-
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     const history = useHistory();
@@ -130,6 +128,9 @@ const TopNav = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
+            <Divider />
+            <MenuItem>{adminInfo?.wallet} Tokens</MenuItem>
+            <Divider />
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
             <Divider />
@@ -213,6 +214,7 @@ const TopNav = () => {
                         </div>
                         {/* <SearchInput value={searchText} onChange={(e) => setSearchText(e.target.value)} /> */}
                         <div className={classes.grow} />
+
                         <div className={classes.sectionDesktop}>
                             <Tooltip title="Notification" aria-label="Notification">
                                 <IconButton className={classes.buttonItems} aria-label="show 17 new notifications" color="inherit">
@@ -250,7 +252,7 @@ const TopNav = () => {
                                             <img className={classes.profileImg} src="https://randomuser.me/api/portraits/men/77.jpg" alt="profile-img" />
                                         </div>
                                         <Typography style={{ textTransform: 'capitalize' }} variant="body2">
-                                            Hi {userObj?.first_name}
+                                            Hi {adminInfo?.firstName}
                                         </Typography>
                                     </div>
                                 </IconButton>

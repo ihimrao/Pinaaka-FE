@@ -11,23 +11,35 @@ export const fetchProjectsFromServer = (token) =>  axios.request({
 
 export const createProject = (accessToken, values, orgId) =>  axios.request({
     method: 'POST',
-    url: apiUrls.users.fetchProjects(orgId),
+    url: apiUrls.users.createKey,
     headers: {
         Authorization: `${ accessToken }`,
     },
     data: {
-        name: `${ values.name }`,
-        description: `${ values.description }`,
-        icon: `${ values.icon }`,
+        key: values.keys,
+        password: values.password,
+        email: orgId,
+        expireAt: values.days,
+        isSingleDevice: values?.keyType || true,
+
     },
 });
 
-export const deleteProject = ({ token, orgId, projectId }) => axios.request({
-    method: 'DELETE',
-    url: apiUrls.users.deleteProject(orgId, projectId),
+export const deleteProject = ({ token, key }) => axios.request({
+    method: 'POST',
+    url: apiUrls.users.deleteProject,
     headers: {
         Authorization: `${ token }`,
     },
+    data: { key },
+});
+export const resetKey = ({ token, key }) => axios.request({
+    method: 'POST',
+    url: apiUrls.users.resetKey,
+    headers: {
+        Authorization: `${ token }`,
+    },
+    data: { key },
 });
 
 export const editProject = (accessToken, nameProject, projectId, orgId) => axios.request({
