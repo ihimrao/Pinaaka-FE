@@ -55,7 +55,6 @@ const ProjectCreateModal = (props) => {
 
     const reduxDispatch = useDispatch();
     const userToken = useSelector(userSelectors.getUserToken);
-    reduxDispatch(getUserinfo(userToken));
 
     const { adminInfo } = useSelector((state) => state.user.userInfoState);
     const [ submitAbled, setSubmitAbled ] = useState(true);
@@ -65,8 +64,8 @@ const ProjectCreateModal = (props) => {
     } = props;
 
     useEffect(() => {
-
-    }, [ globalDetails ]);
+        reduxDispatch(getUserinfo(userToken));
+    }, [  ]);
     const accessToken = useSelector(userSelectors.getUserToken);
     let RandomKey = '';
     let RandPassword = '';
@@ -199,6 +198,7 @@ const ProjectCreateModal = (props) => {
                                                         7 Day
                                                     </Typography>
                                                     <Typography variant="caption">
+
                                                         (Price - {globalDetails?.keyPrice?.price?.seven})
                                                     </Typography>
                                                 </div>

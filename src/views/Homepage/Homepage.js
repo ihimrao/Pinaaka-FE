@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/styles';
 import { useParams } from 'react-router-dom';
 import { getProjectData } from '../../redux/states/project/projectActions';
-import { clearContent } from '../../redux/states/content/contentAction';
 import StackCard from '../../container/StackCard/StackCard';
 import userSelectors from '../../redux/states/user/userSelector';
 import ProjectCreateModal from '../../container/ProjectCreateModal/ProjectCreateModal';
@@ -69,20 +68,13 @@ const Homepage = () => {
     const userToken = useSelector(userSelectors.getUserToken);
     const [ nameSearch, setSearchName ] = useState('');
     const [ filterData, setFilterData ] = useState(data);
-    const [ modalData, setModalData ] = useState(false);
 
     const handleToggleCreateProjectModal = (bool) => {
         setIsProjectCreateModalOpen(bool);
     };
-
     useEffect(() => {
         reduxDispatch(getProjectData(userToken, orgId));
-        reduxDispatch(clearContent());
     }, []);
-
-    useEffect(() => {
-        reduxDispatch(getProjectData(userToken, orgId));
-    }, [ modalData ]);
 
     useEffect(() => {
         if (data?.length) {
@@ -148,7 +140,7 @@ const Homepage = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <ProjectCreateModal setModalData={setModalData} open={isProjectCreateModalOpen} handleClose={() => handleToggleCreateProjectModal(false)} orgId={orgId} />
+                    <ProjectCreateModal open={isProjectCreateModalOpen} handleClose={() => handleToggleCreateProjectModal(false)} orgId={orgId} />
                 </div>
             </div>
         </>

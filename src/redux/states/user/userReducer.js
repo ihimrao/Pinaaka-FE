@@ -23,7 +23,6 @@ const userReducer = (state = INIT_STATE, action) => {
                 userInfoState: action.payload.user,
             };
         case types.user.SET_GLOBAL_INFO:
-            console.log('=>', action.payload.user);
             return {
                 ...state,
                 globalInfoState: action.payload.user,

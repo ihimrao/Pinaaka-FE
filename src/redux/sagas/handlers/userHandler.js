@@ -19,7 +19,6 @@ export function* handleFetchUserInfo(action) {
     try {
         const response = yield call(() => fetchUserInfoFromServer(action?.auth || {}));
         const { data: daata } = yield call(() => fetchGlobalInfoFromServer(action?.auth || {}));
-        console.log('=>', daata.data);
         const { data } = response;
         yield put(setUserinfo(data));
         yield put(setGlobalinfo(daata.data));

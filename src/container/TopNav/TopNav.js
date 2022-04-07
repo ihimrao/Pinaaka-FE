@@ -206,7 +206,7 @@ const TopNav = () => {
 
             <AppBar elevation={0} color="transparent" position="static">
                 <div className={classes.container}>
-                    <Toolbar style={{ padding: '0px' }}>
+                    <Toolbar style={{ border: '1px solid red', borderRadius: '10px' }}>
                         <div className={classes.logoWrapper}>
                             <Button className={classes.logoBtn} disableRipple type="button" onClick={handleRedirectToHomepage}>
                                 <img className={classes.logo} alt="logo" src="https://i.imgur.com/A7FNVyr.png" />

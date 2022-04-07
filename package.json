@@ -3,7 +3,6 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-    	"@mui/lab": "latest",     
 		"@emotion/cache": "11.4.0",
 		"@emotion/react": "^11.8.1",
 		"@emotion/styled": "^11.3.0",
@@ -13,6 +12,7 @@
 		"@material-ui/pickers": "^4.0.0-alpha.7",
 		"@material-ui/styles": "^4.11.4",
 		"@mui/icons-material": "5.1.1",
+		"@mui/lab": "latest",
 		"@mui/material": "^5.4.4",
 		"@mui/styled-engine": "5.1.1",
 		"@mui/styles": "^5.2.0",

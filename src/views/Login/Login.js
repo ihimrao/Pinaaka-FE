@@ -167,7 +167,7 @@ const Login = () => {
 
                                 </MaterialButton>
                             </Box>
-                            SIGN IN TO TRIDO-ADMIN
+                            SIGN IN TO TRIDO-ADMIN{console.log(' => ', process.env.REACT_APP_URI)}
                         </Typography>
                     </div>
                     <LoginForm loginError={loginError} handleSubmit={handleLogin} />

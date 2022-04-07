@@ -17,6 +17,48 @@ const useStyles = makeStyles((theme) => ({
         },
         borderRadius: '0px',
     },
+
+    button: {
+        textDecoration: 'none',
+        cursor: 'pointer',
+        width: '200px',
+        height: '60px',
+        padding: '20px 60px',
+        lineHeight: '60px',
+        background: 'linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)',
+        backgroundSize: '400%',
+        borderRadius: '999px',
+        fontSize: '1.3em',
+        position: 'relative',
+        zIndex: '1',
+        '&:hover': {
+            textDecoration: 'none',
+            animation: 'animate 8s linear',
+        },
+
+    },
+
+    //   .button:before {
+    //     content: "";
+    //     position: absolute;
+    //     top: -5px;
+    //     left: -5px;
+    //     right: -5px;
+    //     bottom: -5px;
+    //     z-index: -1;
+    //     background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    //     background-size: 400%;
+    //     border-radius: 999px;
+    //     filter: blur(20px);
+    //     opacity: 0;
+    //     transition: 0.5s;
+    //   }
+
+//   .button:hover:before {
+//     filter: blur(20px);
+//     opacity: 1;
+//     animation: animate 8s linear infinite;
+//   }
 }));
 const LoginForm = (props) => {
     const classes = useStyles();
@@ -115,7 +157,7 @@ const LoginForm = (props) => {
                 }}
                 />
 
-                <LoginButton style={{ width: '50%', justifyContent: 'center', alignItems: 'center'  }} type="submit" variant="contained">
+                <LoginButton fullWidth className={classes.button} type="submit" variant="contained">
                     Login
                 </LoginButton>
             </form>
